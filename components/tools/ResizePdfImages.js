@@ -2,7 +2,21 @@
 
 import { useState } from "react";
 import FileDropzone from "@/components/FileDropzone";
-import { createBasicPdf } from "@/lib/file-utils";
+import { downloadFile } from "@/lib/file-utils";
+
+async function getPdfLib() {
+  if (typeof window !== "undefined" && window.PDFLib) {
+    return window.PDFLib;
+  }
+  return new Promise((resolve, reject) => {
+    if (typeof window === "undefined") return resolve(null);
+    const script = document.createElement("script");
+    script.src = "https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js";
+    script.onload = () => resolve(window.PDFLib);
+    script.onerror = () => reject(new Error("Failed to load PDF processing engine."));
+    document.head.appendChild(script);
+  });
+}
 
 export default function ResizePdfImages() {
   const [files, setFiles] = useState([]);
@@ -21,13 +35,24 @@ export default function ResizePdfImages() {
     setDone(false);
 
     try {
-      const file = files[0];
+      const pdfLib = await getPdfLib();
+      const PDFDocument = pdfLib.PDFDocument;
 
-      createBasicPdf(
-        `Resized PDF: ${file.name}`,
-        `PDF Page Images Resized to ${scale}% Scaling\nOriginal File: ${file.name}`,
-        `resized-${file.name}`
-      );
+      const file = files[0];
+      const arrayBuffer = await file.arrayBuffer();
+      const pdfDoc = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
+
+      const scaleFactor = scale / 100;
+      const pages = pdfDoc.getPages();
+      pages.forEach((page) => {
+        const { width, height } = page.getSize();
+        page.setSize(width * scaleFactor, height * scaleFactor);
+        page.scale(scaleFactor, scaleFactor);
+      });
+
+      const pdfBytes = await pdfDoc.save();
+      const blob = new Blob([pdfBytes], { type: "application/pdf" });
+      downloadFile(blob, `scaled-${file.name}`);
 
       setDone(true);
     } catch (err) {
@@ -44,13 +69,13 @@ export default function ResizePdfImages() {
         maxSizeMB={50}
         files={files}
         onFilesChange={setFiles}
-        hint="Upload PDF to resize images"
+        hint="Upload PDF to scale pages and image dimensions"
       />
 
       {files.length > 0 && (
         <div className="space-y-2">
           <div className="flex justify-between text-xs font-semibold text-slate-700">
-            <span>Image Scaling Percentage</span>
+            <span>Page & Image Scale Percentage</span>
             <span className="text-blue-600 font-bold">{scale}%</span>
           </div>
           <input
@@ -70,7 +95,7 @@ export default function ResizePdfImages() {
       {done && (
         <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center gap-2">
           <span>✅</span>
-          <span>PDF images resized & file downloaded!</span>
+          <span>PDF page dimensions scaled & file downloaded!</span>
         </div>
       )}
 
@@ -79,7 +104,7 @@ export default function ResizePdfImages() {
         disabled={!files.length || processing}
         className="ct-btn-primary w-full py-3 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {processing ? "Resizing…" : `Resize PDF Images (${scale}%)`}
+        {processing ? "Scaling PDF Pages…" : `Resize PDF (${scale}%)`}
       </button>
     </div>
   );

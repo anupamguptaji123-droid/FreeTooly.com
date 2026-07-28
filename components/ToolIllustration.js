@@ -1,0 +1,158 @@
+"use client";
+
+export default function ToolIllustration({ slug, name, category }) {
+  // Return tailored SVG illustration based on tool slug or category
+  switch (slug) {
+    case "text-to-handwriting":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#FEF9C3" />
+          <circle cx="100" cy="80" r="55" fill="#FEF08A" />
+          {/* Paper */}
+          <rect x="65" y="45" width="70" height="80" rx="6" fill="#FFFFFF" stroke="#EAB308" strokeWidth="2" />
+          <line x1="75" y1="65" x2="120" y2="65" stroke="#CA8A04" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="75" y1="80" x2="125" y2="80" stroke="#CA8A04" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="75" y1="95" x2="110" y2="95" stroke="#CA8A04" strokeWidth="2.5" strokeLinecap="round" />
+          {/* Hand holding pen */}
+          <path d="M125 45L145 25C148 22 153 22 156 25L157 26C160 29 160 34 157 37L137 57L125 45Z" fill="#F59E0B" />
+          <path d="M125 45L118 64L137 57L125 45Z" fill="#D97706" />
+          <circle cx="118" cy="64" r="2" fill="#000000" />
+        </svg>
+      );
+
+    case "word-to-pdf":
+    case "pdf-to-word":
+    case "merge-pdf":
+    case "compress-pdf":
+    case "protect-pdf":
+    case "edit-pdf-text":
+    case "resize-pdf-images":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#EFF6FF" />
+          <circle cx="100" cy="80" r="55" fill="#DBEAFE" />
+          {/* Blue Word Doc */}
+          <rect x="50" y="45" width="50" height="65" rx="6" fill="#2563EB" />
+          <text x="60" y="80" fill="#FFFFFF" fontSize="16" fontWeight="bold">W</text>
+          {/* Arrow */}
+          <path d="M102 75L114 75M114 75L108 69M114 75L108 81" stroke="#3B82F6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          {/* Red PDF Doc */}
+          <rect x="118" y="45" width="50" height="65" rx="6" fill="#DC2626" />
+          <text x="125" y="80" fill="#FFFFFF" fontSize="14" fontWeight="bold">PDF</text>
+        </svg>
+      );
+
+    case "crop-jpg":
+    case "image-to-pdf":
+    case "resize-image":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#ECFDF5" />
+          <circle cx="100" cy="80" r="55" fill="#D1FAE5" />
+          {/* Photo frame */}
+          <rect x="55" y="40" width="90" height="75" rx="8" fill="#FFFFFF" stroke="#10B981" strokeWidth="2.5" />
+          {/* Sun & Mountains */}
+          <circle cx="75" cy="58" r="7" fill="#F59E0B" />
+          <path d="M60 100L85 68L105 88L120 75L140 100H60Z" fill="#10B981" opacity="0.8" />
+          {/* Crop handles */}
+          <path d="M48 40H60M48 40V52" stroke="#059669" strokeWidth="3" strokeLinecap="round" />
+          <path d="M152 115H140M152 115V103" stroke="#059669" strokeWidth="3" strokeLinecap="round" />
+        </svg>
+      );
+
+    case "sql-beautifier":
+    case "sql-formatter":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#FFF1F2" />
+          <circle cx="100" cy="80" r="55" fill="#FFE4E6" />
+          {/* SQL Database cylinders */}
+          <rect x="65" y="45" width="70" height="70" rx="12" fill="#E11D48" />
+          <ellipse cx="100" cy="60" rx="25" ry="8" fill="#FFFFFF" opacity="0.9" />
+          <ellipse cx="100" cy="80" rx="25" ry="8" fill="#FFFFFF" opacity="0.7" />
+          <ellipse cx="100" cy="100" rx="25" ry="8" fill="#FFFFFF" opacity="0.9" />
+          <text x="82" y="74" fill="#E11D48" fontSize="12" fontWeight="bold">SQL</text>
+        </svg>
+      );
+
+    case "html-beautifier":
+    case "css-beautifier":
+    case "js-beautifier":
+    case "code-formatter":
+    case "json-formatter":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#F0F9FF" />
+          <circle cx="100" cy="80" r="55" fill="#E0F2FE" />
+          {/* Monitor */}
+          <rect x="50" y="40" width="100" height="65" rx="6" fill="#0284C7" />
+          <rect x="56" y="46" width="88" height="53" rx="4" fill="#0F172A" />
+          {/* Code symbol < /> */}
+          <text x="76" y="80" fill="#38BDF8" fontSize="20" fontWeight="bold">&lt;/&gt;</text>
+          {/* Monitor Stand */}
+          <path d="M90 105L85 120H115L110 105H90Z" fill="#0284C7" />
+        </svg>
+      );
+
+    case "text-cleaner":
+    case "text-compare":
+    case "word-counter":
+    case "word-frequency-counter":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#FDF4FF" />
+          <circle cx="100" cy="80" r="55" fill="#FAE8FF" />
+          {/* Document clip */}
+          <rect x="65" y="45" width="70" height="75" rx="8" fill="#FFFFFF" stroke="#C084FC" strokeWidth="2.5" />
+          <rect x="80" y="38" width="40" height="12" rx="4" fill="#A855F7" />
+          <line x1="78" y1="65" x2="122" y2="65" stroke="#C084FC" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="78" y1="80" x2="115" y2="80" stroke="#C084FC" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="78" y1="95" x2="105" y2="95" stroke="#C084FC" strokeWidth="2.5" strokeLinecap="round" />
+        </svg>
+      );
+
+    default:
+      // Category fallback illustration
+      if (category === "pdf-tools" || category === "word-tools") {
+        return (
+          <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+            <rect width="200" height="160" rx="16" fill="#EFF6FF" />
+            <circle cx="100" cy="80" r="55" fill="#DBEAFE" />
+            <rect x="65" y="45" width="70" height="75" rx="8" fill="#FFFFFF" stroke="#2563EB" strokeWidth="2.5" />
+            <path d="M78 65H122M78 80H115M78 95H105" stroke="#3B82F6" strokeWidth="2.5" strokeLinecap="round" />
+          </svg>
+        );
+      }
+      if (category === "image-tools") {
+        return (
+          <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+            <rect width="200" height="160" rx="16" fill="#ECFDF5" />
+            <circle cx="100" cy="80" r="55" fill="#D1FAE5" />
+            <rect x="55" y="42" width="90" height="70" rx="8" fill="#FFFFFF" stroke="#10B981" strokeWidth="2.5" />
+            <circle cx="75" cy="60" r="6" fill="#F59E0B" />
+            <path d="M60 98L85 70L105 88L120 78L140 98H60Z" fill="#10B981" />
+          </svg>
+        );
+      }
+      if (category === "programming" || category === "converter") {
+        return (
+          <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+            <rect width="200" height="160" rx="16" fill="#F0F9FF" />
+            <circle cx="100" cy="80" r="55" fill="#E0F2FE" />
+            <rect x="55" y="45" width="90" height="60" rx="6" fill="#0F172A" />
+            <text x="80" y="82" fill="#38BDF8" fontSize="18" fontWeight="bold">&lt;/&gt;</text>
+          </svg>
+        );
+      }
+      // General fallback
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#FEF3C7" />
+          <circle cx="100" cy="80" r="55" fill="#FDE68A" />
+          <rect x="65" y="45" width="70" height="75" rx="8" fill="#FFFFFF" stroke="#D97706" strokeWidth="2.5" />
+          <line x1="78" y1="65" x2="122" y2="65" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="78" y1="80" x2="115" y2="80" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" />
+        </svg>
+      );
+  }
+}

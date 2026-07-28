@@ -36,6 +36,51 @@ h1, h2, h3, h4, .font-heading {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+/* Infinite Marquee Animation for Hero 3 */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Butter-Smooth Mobile Side Drawer Animations                               */
+/* -------------------------------------------------------------------------- */
+.drawer-backdrop {
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-panel {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer-closed {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.drawer-panel-open {
+  transform: translateX(0%);
+}
+
+.drawer-panel-closed {
+  transform: translateX(100%);
+}
+
 /* CommonTools Navbar */
 .ct-navbar {
   background-color: #ffffff;

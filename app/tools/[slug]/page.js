@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { tools, getToolBySlug, categoryLabels } from "@/lib/tools-registry";
 import ToolRenderer from "@/components/ToolRenderer";
+import ToolGuideAndFaq from "@/components/ToolGuideAndFaq";
 
 export function generateStaticParams() {
   return tools.map((t) => ({ slug: t.slug }));
@@ -25,7 +26,7 @@ export default function ToolPage({ params = {} }) {
     .slice(0, 4);
 
   return (
-    <div className="max-w-4xl mx-auto px-5 py-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-5 py-8">
       {/* Back button */}
       <Link
         href="/"
@@ -38,7 +39,7 @@ export default function ToolPage({ params = {} }) {
       </Link>
 
       {/* Tool Header Box */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 mb-6 shadow-sm">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 mb-6 shadow-2xs">
         <div className="flex items-start gap-4">
           {tool.icon && (
             <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-2xl flex-shrink-0">
@@ -60,13 +61,16 @@ export default function ToolPage({ params = {} }) {
       </div>
 
       {/* Tool Interactive Workplace Box */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 mb-10 shadow-sm">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 mb-10 shadow-2xs">
         <ToolRenderer slug={tool.slug} />
       </div>
 
+      {/* 3-Step Guide and Accordion FAQ */}
+      <ToolGuideAndFaq tool={tool} />
+
       {/* Related tools */}
       {related.length > 0 && (
-        <div className="space-y-4">
+        <div className="space-y-4 mt-12 pt-8 border-t border-slate-200">
           <h2 className="font-heading text-lg font-bold text-slate-900">
             Related Tools
           </h2>
@@ -75,7 +79,7 @@ export default function ToolPage({ params = {} }) {
               <Link
                 key={relTool.slug}
                 href={`/tools/${relTool.slug}`}
-                className="ct-card group"
+                className="ct-card group p-4"
               >
                 <div className="flex items-center gap-3">
                   {relTool.icon && <span className="text-xl flex-shrink-0">{relTool.icon}</span>}

@@ -25,8 +25,7 @@ export default function PdfToWord() {
       let extractedText = text.replace(/[\x00-\x1F\x7F-\x9F]/g, " ");
 
       try {
-        const pName = "pdfjs-dist/build/pdf";
-        const pdfjsLib = await import(pName);
+        const pdfjsLib = await eval('import("pdfjs-dist/build/pdf")');
         const arrayBuffer = await file.arrayBuffer();
         const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
         let pageTexts = [];
@@ -37,7 +36,7 @@ export default function PdfToWord() {
         }
         extractedText = pageTexts.join("\n\n");
       } catch {
-        // Pure JS fallback
+        // Safe runtime text extraction fallback
       }
 
       const docHtml = `
