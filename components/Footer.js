@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 
 function WrenchIcon() {
   return (
@@ -8,29 +11,46 @@ function WrenchIcon() {
   );
 }
 
-const footerLinks = {
-  "Popular Tools": [
-    { label: "Word to PDF", href: "/tools/word-to-pdf" },
-    { label: "PDF to Word", href: "/tools/pdf-to-word" },
-    { label: "Merge PDF", href: "/tools/merge-pdf" },
-    { label: "Compress PDF", href: "/tools/compress-pdf" },
-    { label: "Word Counter", href: "/tools/word-counter" },
-  ],
-  "Categories": [
-    { label: "PDF Tools", href: "/#tools" },
-    { label: "Word Tools", href: "/#tools" },
-    { label: "Image Tools", href: "/#tools" },
-    { label: "Text Editing", href: "/#tools" },
-    { label: "Programming", href: "/#tools" },
-  ],
-  "Company & Legal": [
-    { label: "Legal Information", href: "/legal" },
-    { label: "Privacy Policy", href: "/privacy-policy" },
-    { label: "Terms & Conditions", href: "/terms" },
-  ],
-};
+const popularTools = [
+  { label: "Word to PDF", href: "/tools/word-to-pdf" },
+  { label: "PDF to Word", href: "/tools/pdf-to-word" },
+  { label: "Merge PDF", href: "/tools/merge-pdf" },
+  { label: "Compress PDF", href: "/tools/compress-pdf" },
+  { label: "Word Counter", href: "/tools/word-counter" },
+];
+
+const categoryLinks = [
+  { label: "PDF Tools", slug: "pdf-tools" },
+  { label: "Word Tools", slug: "word-tools" },
+  { label: "Image Tools", slug: "image-tools" },
+  { label: "Text Editing", slug: "editing" },
+  { label: "Programming", slug: "programming" },
+];
+
+const legalLinks = [
+  { label: "Legal Information", href: "/legal" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms & Conditions", href: "/terms" },
+];
 
 export default function Footer() {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleCategoryClick = (e, slug) => {
+    e.preventDefault();
+    if (pathname !== "/") {
+      router.push("/");
+      setTimeout(() => {
+        document.getElementById("tools")?.scrollIntoView({ behavior: "smooth" });
+        window.dispatchEvent(new CustomEvent("setCategory", { detail: slug }));
+      }, 300);
+    } else {
+      document.getElementById("tools")?.scrollIntoView({ behavior: "smooth" });
+      window.dispatchEvent(new CustomEvent("setCategory", { detail: slug }));
+    }
+  };
+
   return (
     <footer className="bg-white border-t border-slate-200 mt-20 text-slate-600">
       <div className="max-w-7xl mx-auto px-5 py-12">
@@ -51,21 +71,50 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Links */}
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title} className="space-y-3">
-              <div className="text-xs font-bold text-slate-900 uppercase tracking-wider">{title}</div>
-              <ul className="space-y-2 text-xs">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <Link href={link.href} className="hover:text-blue-600 transition-colors">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Popular Tools Links */}
+          <div className="space-y-3">
+            <div className="text-xs font-bold text-slate-900 uppercase tracking-wider">Popular Tools</div>
+            <ul className="space-y-2 text-xs">
+              {popularTools.map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className="hover:text-blue-600 transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Categories Links (Fixed logic) */}
+          <div className="space-y-3">
+            <div className="text-xs font-bold text-slate-900 uppercase tracking-wider">Categories</div>
+            <ul className="space-y-2 text-xs">
+              {categoryLinks.map((cat) => (
+                <li key={cat.slug}>
+                  <button
+                    onClick={(e) => handleCategoryClick(e, cat.slug)}
+                    className="hover:text-blue-600 transition-colors text-left font-normal cursor-pointer"
+                  >
+                    {cat.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company & Legal Links */}
+          <div className="space-y-3">
+            <div className="text-xs font-bold text-slate-900 uppercase tracking-wider">Company & Legal</div>
+            <ul className="space-y-2 text-xs">
+              {legalLinks.map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className="hover:text-blue-600 transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="border-t border-slate-100 my-8" />
