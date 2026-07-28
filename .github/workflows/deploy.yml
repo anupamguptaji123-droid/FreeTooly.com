@@ -24,13 +24,14 @@ jobs:
       - name: Build Next.js Application
         run: npm run build
 
-      - name: Deploy to Hostinger via FTP
+      - name: Deploy to Hostinger via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: 145.79.209.95
+          server: freetooly.com
           username: ${{ secrets.HOSTINGER_FTP_USER }}
           password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
-          protocol: ftp
+          protocol: ftps
           port: 21
           local-dir: ./out/
-          server-dir: /public_html/
+          server-dir: ./public_html/
+          security-mode: loose
