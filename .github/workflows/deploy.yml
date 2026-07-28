@@ -30,12 +30,11 @@ jobs:
       - name: Sync Files to Hostinger via LFTP
         run: |
           lftp -c "
-            set ssl:verify-certificate no;
-            set ftp:ssl-allow true;
-            set ftp:ssl-force false;
+            set ftp:ssl-allow false;
             set ftp:passive-mode true;
-            set net:timeout 15;
-            set net:max-retries 3;
+            set net:timeout 30;
+            set net:max-retries 10;
+            set net:reconnect-interval-base 5;
             open -u '${{ secrets.HOSTINGER_FTP_USER }}','${{ secrets.HOSTINGER_FTP_PASSWORD }}' 145.79.209.95;
-            mirror --reverse --only-newer --parallel=5 --verbose ./out/ ./;
+            mirror --reverse --only-newer --parallel=2 --verbose ./out/ ./;
           "
