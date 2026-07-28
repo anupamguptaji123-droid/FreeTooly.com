@@ -30,6 +30,7 @@ jobs:
       - name: Sync Files to Hostinger via LFTP
         run: |
           lftp -c "
+            set ssl:verify-certificate no;
             set ftp:ssl-allow true;
             set ftp:ssl-force false;
             set ftp:passive-mode true;
