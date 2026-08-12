@@ -77,5 +77,4 @@ FreeTooly operates under a strict **Zero File Storage Guarantee**. When you proc
 - [Terms & Conditions](https://www.freetooly.com/terms)
 
 ---
-hello
 © 2026 **FreeTooly.com**. All rights reserved.
