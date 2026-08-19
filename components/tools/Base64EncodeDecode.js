@@ -90,7 +90,7 @@ export default function Base64EncodeDecode() {
               setError("");
             }}
           >
-            🔒 Encode Mode
+             Encode Mode
           </button>
           <button
             type="button"
@@ -100,7 +100,7 @@ export default function Base64EncodeDecode() {
               setError("");
             }}
           >
-            🔓 Decode Mode
+             Decode Mode
           </button>
         </div>
 
@@ -154,14 +154,14 @@ export default function Base64EncodeDecode() {
           className="ct-btn-primary text-sm flex-1 sm:flex-initial"
           onClick={handleEncode}
         >
-          🔒 Encode to Base64
+           Encode to Base64
         </button>
         <button
           type="button"
           className="ct-btn-secondary text-sm flex-1 sm:flex-initial"
           onClick={handleDecode}
         >
-          🔓 Decode Base64
+           Decode Base64
         </button>
       </div>
 

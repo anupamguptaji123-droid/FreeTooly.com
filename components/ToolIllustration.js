@@ -3,6 +3,44 @@
 export default function ToolIllustration({ slug, name, category }) {
   // Return tailored SVG illustration based on tool slug or category
   switch (slug) {
+    case "base64-encode-decode":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#0C4A6E" />
+          <circle cx="100" cy="80" r="65" fill="#0284C7" opacity="0.25" />
+
+          {/* Inner card container */}
+          <rect x="30" y="16" width="140" height="128" rx="16" fill="#0F172A" stroke="#38BDF8" strokeWidth="2" />
+
+          {/* Circular arrows loop */}
+          <path d="M72 50C78 44 88 42 100 42C116 42 128 50 128 64" stroke="#38BDF8" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M123 59L128 64L133 59" stroke="#38BDF8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <text x="100" y="37" fill="#7DD3FC" fontSize="7.5" fontWeight="bold" textAnchor="middle">ENCODE</text>
+
+          <path d="M128 78C122 84 112 86 100 86C84 86 72 78 72 64" stroke="#38BDF8" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M77 69L72 64L67 69" stroke="#38BDF8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <text x="100" y="94" fill="#7DD3FC" fontSize="7.5" fontWeight="bold" textAnchor="middle">DECODE</text>
+
+          {/* Middle badges */}
+          <g transform="translate(43, 54)">
+            {/* Input Badge */}
+            <rect x="0" y="0" width="46" height="20" rx="5" fill="#1E293B" stroke="#475569" strokeWidth="1" />
+            <text x="23" y="13" fill="#E2E8F0" fontSize="8.5" fontFamily="monospace" fontWeight="bold" textAnchor="middle">010101</text>
+
+            {/* Swap Arrow Icon */}
+            <path d="M50 10H64M61 7L64 10L61 13M53 7L50 10L53 13" stroke="#38BDF8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+
+            {/* Output Badge */}
+            <rect x="68" y="0" width="46" height="20" rx="5" fill="#1E293B" stroke="#38BDF8" strokeWidth="1.5" />
+            <text x="91" y="13" fill="#38BDF8" fontSize="7.5" fontFamily="monospace" fontWeight="bold" textAnchor="middle">SGVsbG8=</text>
+          </g>
+
+          {/* Title Text */}
+          <text x="100" y="122" fill="#FFFFFF" fontSize="13" fontWeight="900" textAnchor="middle" letterSpacing="1">BASE64</text>
+          <text x="100" y="133" fill="#94A3B8" fontSize="6.5" fontWeight="bold" textAnchor="middle" letterSpacing="0.5">ENCODE / DECODE</text>
+        </svg>
+      );
+
     case "text-to-handwriting":
       return (
         <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
