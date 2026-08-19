@@ -77,6 +77,13 @@ export default function Base64EncodeDecode() {
     setError("");
   }
 
+  function handleModeChange(newMode) {
+    setMode(newMode);
+    setInput("");
+    setOutput("");
+    setError("");
+  }
+
   return (
     <div className="space-y-4">
       {/* Mode Switcher & Controls */}
@@ -85,20 +92,14 @@ export default function Base64EncodeDecode() {
           <button
             type="button"
             className={`ct-cat-tab ${mode === "encode" ? "active" : ""}`}
-            onClick={() => {
-              setMode("encode");
-              setError("");
-            }}
+            onClick={() => handleModeChange("encode")}
           >
              Encode Mode
           </button>
           <button
             type="button"
             className={`ct-cat-tab ${mode === "decode" ? "active" : ""}`}
-            onClick={() => {
-              setMode("decode");
-              setError("");
-            }}
+            onClick={() => handleModeChange("decode")}
           >
              Decode Mode
           </button>
@@ -149,20 +150,23 @@ export default function Base64EncodeDecode() {
 
       {/* Action Buttons */}
       <div className="flex flex-wrap gap-3">
-        <button
-          type="button"
-          className="ct-btn-primary text-sm flex-1 sm:flex-initial"
-          onClick={handleEncode}
-        >
-           Encode to Base64
-        </button>
-        <button
-          type="button"
-          className="ct-btn-secondary text-sm flex-1 sm:flex-initial"
-          onClick={handleDecode}
-        >
-           Decode Base64
-        </button>
+        {mode === "encode" ? (
+          <button
+            type="button"
+            className="ct-btn-primary text-sm flex-1 sm:flex-initial"
+            onClick={handleEncode}
+          >
+             Encode to Base64
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="ct-btn-primary text-sm flex-1 sm:flex-initial"
+            onClick={handleDecode}
+          >
+             Decode Base64
+          </button>
+        )}
       </div>
 
       {/* Error Message */}
