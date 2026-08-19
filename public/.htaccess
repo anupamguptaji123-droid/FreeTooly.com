@@ -1,0 +1,24 @@
+Options -MultiViews
+DirectoryIndex index.html
+
+# Enable rewrite engine
+RewriteEngine On
+RewriteBase /
+
+# Serve existing files/directories directly (CSS, JS, images, etc.)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# If the request has no trailing slash and is not a file, add trailing slash
+# This handles /tools/word-counter -> /tools/word-counter/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.+)$ /$1/ [R=301,L]
+
+# For directory requests, serve index.html from that directory
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+)/$ /$1/index.html [L]
+
+# Serve 404 page for anything else
+ErrorDocument 404 /404/index.html
