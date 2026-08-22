@@ -34,6 +34,6 @@ jobs:
           username: ${{ secrets.HOSTINGER_FTP_USER }}
           password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
           local-dir: ./out/
-          server-dir: ./public_html/
+          server-dir: ./
           dangerous-clean-slate: false
           timeout: 60000
