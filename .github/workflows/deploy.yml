@@ -29,24 +29,12 @@ jobs:
         run: npm run build
 
       - name: 🚀 Fast Deploy to Hostinger via FTPS
-        env:
-          FTP_SERVER: "145.79.209.95"
-          FTP_USER: ${{ secrets.HOSTINGER_FTP_USER }}
-          FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
-        run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
-          lftp -e "
-            set ssl:verify-certificate no;
-            set ftp:ssl-allow yes;
-            set ftp:ssl-force yes;
-            set ftp:ssl-protect-data yes;
-            set ftp:passive-mode true;
-            set net:timeout 30;
-            set net:max-retries 5;
-            set net:reconnect-interval-base 3;
-            open ftps://${FTP_SERVER};
-            user \"${FTP_USER}\" \"${FTP_PASSWORD}\";
-            mirror --reverse --delete --verbose --parallel=8 --exclude-glob .git* --exclude-glob .DS_Store ./out/ ./;
-            bye;
-          "
-
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: 145.79.209.95
+          username: ${{ secrets.HOSTINGER_FTP_USER }}
+          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: ./
+          dangerous-clean-slate: false
+          timeout: 60000
