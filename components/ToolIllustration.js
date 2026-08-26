@@ -14,6 +14,15 @@ export default function ToolIllustration({ slug, name, category }) {
 
     case "base64-encode-decode":
       return (
+        <img
+          src="/Base64_encode_and_decoder.png"
+          alt="Base64 Encode and Decode"
+          className="h-full w-full object-contain"
+        />
+      );
+
+    case "base64-encode-decode-old":
+      return (
         <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
           <rect width="200" height="160" rx="16" fill="#0C4A6E" />
           <circle cx="100" cy="80" r="65" fill="#0284C7" opacity="0.25" />
@@ -89,7 +98,6 @@ export default function ToolIllustration({ slug, name, category }) {
         </svg>
       );
 
-    case "crop-jpg":
     case "image-to-pdf":
     case "resize-image":
       return (
@@ -105,6 +113,15 @@ export default function ToolIllustration({ slug, name, category }) {
           <path d="M48 40H60M48 40V52" stroke="#059669" strokeWidth="3" strokeLinecap="round" />
           <path d="M152 115H140M152 115V103" stroke="#059669" strokeWidth="3" strokeLinecap="round" />
         </svg>
+      );
+
+    case "crop-jpg":
+      return (
+        <img
+          src="/Crop_JPG_Image.png"
+          alt="Crop JPG Image"
+          className="h-full w-full object-contain"
+        />
       );
 
     case "sql-beautifier":
