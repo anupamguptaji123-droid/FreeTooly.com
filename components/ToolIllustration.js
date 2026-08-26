@@ -21,6 +21,98 @@ export default function ToolIllustration({ slug, name, category }) {
         />
       );
 
+    case "case-converter":
+      return (
+        <img
+          src="/Case_convertor.png"
+          alt="Case Converter"
+          className="h-full w-full object-contain"
+        />
+      );
+
+    case "pdf-to-word":
+      return (
+        <img
+          src="/PDF_To_Word.png"
+          alt="PDF To Word"
+          className="h-full w-full object-contain"
+        />
+      );
+
+    case "word-counter":
+      return (
+        <img
+          src="/Word_Counter.png"
+          alt="Word Counter"
+          className="h-full w-full object-contain"
+        />
+      );
+
+    case "weight-converter":
+    case "kg-to-lbs":
+      return (
+        <img
+          src="/KG_to_Lbs.png"
+          alt="kg to lbs Converter"
+          className="h-full w-full object-contain"
+        />
+      );
+
+    case "merge-word":
+      return (
+        <img
+          src="/Merge_Word_file.png"
+          alt="Merge Word Files"
+          className="h-full w-full object-contain"
+        />
+      );
+
+    case "protect-pdf":
+      return (
+        <img
+          src="/Protect_pdf.png"
+          alt="Protect PDF"
+          className="h-full w-full object-contain"
+        />
+      );
+
+    case "remove-punctuation":
+      return (
+        <img
+          src="/Remove_punctuation.png"
+          alt="Remove Punctuation"
+          className="h-full w-full object-contain"
+        />
+      );
+
+    case "word-to-pdf":
+      return (
+        <img
+          src="/Word_to_pdf_converter.png"
+          alt="Word to PDF Converter"
+          className="h-full w-full object-contain"
+        />
+      );
+
+    case "image-to-pdf":
+      return (
+        <img
+          src="/Image_to_pdf.png"
+          alt="Image to PDF"
+          className="h-full w-full object-contain"
+        />
+      );
+
+    case "text-reverser":
+    case "reverse-text":
+      return (
+        <img
+          src="/Reverse_text.png"
+          alt="Reverse Text"
+          className="h-full w-full object-contain"
+        />
+      );
+
     case "base64-encode-decode-old":
       return (
         <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
@@ -76,11 +168,8 @@ export default function ToolIllustration({ slug, name, category }) {
         </svg>
       );
 
-    case "word-to-pdf":
-    case "pdf-to-word":
     case "merge-pdf":
     case "compress-pdf":
-    case "protect-pdf":
     case "edit-pdf-text":
     case "resize-pdf-images":
       return (
@@ -98,7 +187,6 @@ export default function ToolIllustration({ slug, name, category }) {
         </svg>
       );
 
-    case "image-to-pdf":
     case "resize-image":
       return (
         <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
@@ -158,9 +246,43 @@ export default function ToolIllustration({ slug, name, category }) {
         </svg>
       );
 
+    case "latex-compiler":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#0C4A6E" />
+          <circle cx="100" cy="80" r="55" fill="#0369A1" opacity="0.4" />
+          {/* Card board */}
+          <rect x="35" y="32" width="130" height="96" rx="12" fill="#0F172A" stroke="#38BDF8" strokeWidth="2" />
+          {/* LaTeX equation text */}
+          <text x="100" y="65" fill="#7DD3FC" fontSize="13" fontFamily="serif" fontStyle="italic" fontWeight="bold" textAnchor="middle">
+            ∫ e^(-x²) dx = √π
+          </text>
+          <line x1="50" y1="80" x2="150" y2="80" stroke="#1E293B" strokeWidth="1.5" />
+          {/* Badge */}
+          <rect x="68" y="90" width="64" height="22" rx="6" fill="#0284C7" />
+          <text x="100" y="105" fill="#FFFFFF" fontSize="10" fontFamily="sans-serif" fontWeight="bold" textAnchor="middle" letterSpacing="1">
+            LaTeX
+          </text>
+        </svg>
+      );
+
     case "text-cleaner":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#FDF4FF" />
+          <circle cx="100" cy="80" r="55" fill="#FAE8FF" />
+          {/* Document clip */}
+          <rect x="65" y="45" width="70" height="75" rx="8" fill="#FFFFFF" stroke="#C084FC" strokeWidth="2.5" />
+          <rect x="80" y="38" width="40" height="12" rx="4" fill="#A855F7" />
+          <line x1="78" y1="65" x2="122" y2="65" stroke="#C084FC" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="78" y1="80" x2="115" y2="80" stroke="#C084FC" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="78" y1="95" x2="105" y2="95" stroke="#C084FC" strokeWidth="2.5" strokeLinecap="round" />
+          {/* Sparkle Clean Badge */}
+          <path d="M135 45L138 35L141 45L151 48L141 51L138 61L135 51L125 48Z" fill="#F59E0B" />
+        </svg>
+      );
+
     case "text-compare":
-    case "word-counter":
       return (
         <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
           <rect width="200" height="160" rx="16" fill="#FDF4FF" />

@@ -56,8 +56,12 @@ import SnakeCamelConverter from "@/components/tools/SnakeCamelConverter";
 import ReplaceNewlines from "@/components/tools/ReplaceNewlines";
 import RandomGenerators from "@/components/tools/RandomGenerators";
 import VideoTools from "@/components/tools/VideoTools";
+import LatexCompiler from "@/components/tools/LatexCompiler";
+import TextCleaner from "@/components/tools/TextCleaner";
 
 const componentMap = {
+  "text-cleaner": TextCleaner,
+  "latex-compiler": LatexCompiler,
   "word-counter": WordCounter,
   "case-converter": CaseConverter,
   "json-formatter": JsonFormatter,
