@@ -209,14 +209,7 @@ function tokenize(code, lang) {
 }
 
 function getPatterns(lang) {
-  // Shared helpers
-  const blockComment = { name: "comment", regex: /\/\*[\s\S]*?\*\// };
-  const lineComment  = { name: "comment", regex: /\/\/[^\n]*/ };
-  const hashComment  = { name: "comment", regex: /#[^\n]*/ };
-  const dqString     = { name: "string",  regex: /"(?:[^"\\]|\\.)*"/ };
-  const sqString     = { name: "string",  regex: /'(?:[^'\\]|\\.)*'/ };
-  const btString     = { name: "string",  regex: /`(?:[^`\\]|\\.)*`/ };
-  const number       = { name: "number",  regex: /\b0x[\da-fA-F]+\b|\b\d+(?:\.\d+)?(?:[eE][+-]?\d+)?\b/ };
+  const number = { name: "number", regex: /\b0x[\da-fA-F]+\b|\b\d+(?:\.\d+)?(?:[eE][+-]?\d+)?\b/ };
 
   if (lang === "python") {
     return [
@@ -242,7 +235,7 @@ function getPatterns(lang) {
 
   if (lang === "css") {
     return [
-      blockComment,
+      { name: "comment",   regex: /\/\*[\s\S]*?\*\// },
       { name: "string",   regex: /"[^"]*"|'[^']*'/ },
       { name: "property", regex: /[\w-]+\s*(?=:)/ },
       { name: "number",   regex: /-?\d+(?:\.\d+)?(?:%|px|em|rem|vh|vw|vmin|vmax|pt|pc|cm|mm|in|ex|ch|fr|deg|rad|turn|s|ms)?\b/ },
@@ -266,10 +259,8 @@ function getPatterns(lang) {
 
   if (lang === "sql") {
     return [
-      lineComment,
-      blockComment,
-      dqString,
-      sqString,
+      { name: "comment",  regex: /--[^\n]*|\/\*[\s\S]*?\*\// },
+      { name: "string",   regex: /"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/ },
       { name: "keyword",  regex: /\b(?:SELECT|FROM|WHERE|JOIN|LEFT|RIGHT|INNER|OUTER|ON|GROUP|BY|ORDER|HAVING|LIMIT|OFFSET|INSERT|INTO|VALUES|UPDATE|SET|DELETE|CREATE|TABLE|DATABASE|DROP|ALTER|ADD|COLUMN|INDEX|PRIMARY|KEY|FOREIGN|REFERENCES|NOT|NULL|UNIQUE|DEFAULT|AUTO_INCREMENT|IF|EXISTS|DISTINCT|AS|AND|OR|IN|LIKE|BETWEEN|IS|COUNT|SUM|AVG|MAX|MIN|UNION|ALL|CASE|WHEN|THEN|ELSE|END)\b/i },
       number,
     ];
@@ -302,8 +293,7 @@ function getPatterns(lang) {
   const kw = kwMap[lang] || jsKeywords;
 
   return [
-    blockComment,
-    lineComment,
+    { name: "comment", regex: /\/\*[\s\S]*?\*\/|\/\/[^\n]*/ },
     { name: "string", regex: /"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`/ },
     { name: "regex",   regex: /\/(?:[^/\\\n]|\\.)+\/[gimsuy]*/ },
     { name: "keyword", regex: kw },
