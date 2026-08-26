@@ -246,6 +246,52 @@ export default function ToolIllustration({ slug, name, category }) {
         </svg>
       );
 
+    case "qr-code-generator":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#090D16" />
+          <circle cx="100" cy="80" r="55" fill="#0284C7" opacity="0.2" />
+          {/* QR Container */}
+          <rect x="52" y="30" width="96" height="96" rx="16" fill="#111A27" stroke="#0284C7" strokeWidth="2" />
+          {/* Top-Left Finder */}
+          <rect x="62" y="40" width="24" height="24" rx="5" fill="none" stroke="#38BDF8" strokeWidth="2.5" />
+          <rect x="68" y="46" width="12" height="12" rx="2.5" fill="#38BDF8" />
+          {/* Top-Right Finder */}
+          <rect x="114" y="40" width="24" height="24" rx="5" fill="none" stroke="#38BDF8" strokeWidth="2.5" />
+          <rect x="120" y="46" width="12" height="12" rx="2.5" fill="#38BDF8" />
+          {/* Bottom-Left Finder */}
+          <rect x="62" y="92" width="24" height="24" rx="5" fill="none" stroke="#38BDF8" strokeWidth="2.5" />
+          <rect x="68" y="98" width="12" height="12" rx="2.5" fill="#38BDF8" />
+          {/* Inner Matrix Dots */}
+          <rect x="94" y="42" width="12" height="6" rx="2" fill="#7DD3FC" />
+          <rect x="94" y="54" width="6" height="12" rx="2" fill="#7DD3FC" />
+          <rect x="104" y="60" width="10" height="6" rx="2" fill="#7DD3FC" />
+          <rect x="74" y="74" width="12" height="10" rx="2" fill="#7DD3FC" />
+          <rect x="94" y="74" width="12" height="12" rx="3" fill="#38BDF8" />
+          <rect x="114" y="74" width="10" height="10" rx="2" fill="#7DD3FC" />
+          <rect x="94" y="96" width="14" height="6" rx="2" fill="#7DD3FC" />
+          <rect x="118" y="92" width="10" height="14" rx="2" fill="#7DD3FC" />
+        </svg>
+      );
+
+    case "free-logo-maker":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#0F172A" />
+          <circle cx="100" cy="80" r="55" fill="#3B82F6" opacity="0.2" />
+          {/* Logo badge */}
+          <rect x="55" y="35" width="90" height="90" rx="20" fill="#1E293B" stroke="#06B6D4" strokeWidth="2.5" />
+          {/* Emblem Rocket Icon */}
+          <path d="M92.5 76.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09zM100 75l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 110 62c0 2.72-.78 7.5-4.05 11a22.7 22.7 0 0 1-3.95 2z" fill="#06B6D4" />
+          {/* Sparkles */}
+          <circle cx="85" cy="55" r="3" fill="#F59E0B" />
+          <circle cx="115" cy="85" r="2.5" fill="#EC4899" />
+          <text x="100" y="106" fill="#FFFFFF" fontSize="9" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle" letterSpacing="1.5">
+            LOGO
+          </text>
+        </svg>
+      );
+
     case "latex-compiler":
       return (
         <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
@@ -303,6 +349,64 @@ export default function ToolIllustration({ slug, name, category }) {
           alt="Word Frequency Counter"
           className="h-full w-full object-contain"
         />
+      );
+
+    case "mute-video":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#F8FAFC" />
+          <circle cx="100" cy="80" r="55" fill="#E2E8F0" />
+          {/* Video Frame */}
+          <rect x="52" y="42" width="96" height="76" rx="10" fill="#0F172A" stroke="#334155" strokeWidth="2" />
+          {/* Speaker Icon Muted */}
+          <path d="M80 72H88L98 62V98L88 88H80V72Z" fill="#94A3B8" />
+          <line x1="108" y1="72" x2="124" y2="88" stroke="#EF4444" strokeWidth="3" strokeLinecap="round" />
+          <line x1="124" y1="72" x2="108" y2="88" stroke="#EF4444" strokeWidth="3" strokeLinecap="round" />
+        </svg>
+      );
+
+    case "free-invoice-generator":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#F0F6FF" />
+          <circle cx="100" cy="80" r="55" fill="#DBEAFE" />
+          {/* Invoice Document with Executive Blue styling */}
+          <rect x="62" y="36" width="76" height="92" rx="6" fill="#FFFFFF" stroke="#0F2744" strokeWidth="2.5" />
+          <rect x="74" y="48" width="30" height="6" rx="2" fill="#2563EB" />
+          <line x1="74" y1="65" x2="126" y2="65" stroke="#E2E8F0" strokeWidth="2" strokeLinecap="round" />
+          <line x1="74" y1="76" x2="110" y2="76" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" />
+          <line x1="118" y1="76" x2="126" y2="76" stroke="#0F2744" strokeWidth="2" strokeLinecap="round" />
+          <line x1="74" y1="87" x2="105" y2="87" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" />
+          <line x1="118" y1="87" x2="126" y2="87" stroke="#0F2744" strokeWidth="2" strokeLinecap="round" />
+          <line x1="74" y1="98" x2="126" y2="98" stroke="#E2E8F0" strokeWidth="1.5" strokeLinecap="round" />
+          <circle cx="120" cy="112" r="6" fill="#059669" />
+          <path d="M118 112L120 114L123 110" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+
+    case "5g-arfcn-to-frequency":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#ECFEFF" />
+          <circle cx="100" cy="80" r="55" fill="#CFFAFE" />
+          {/* Signal tower + Radio waves */}
+          <path d="M100 45V115M85 115L100 55L115 115M80 85H120M88 70H112" stroke="#0891B2" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M75 55C65 65 65 95 75 105" stroke="#06B6D4" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M125 55C135 65 135 95 125 105" stroke="#06B6D4" strokeWidth="2.5" strokeLinecap="round" />
+          <circle cx="100" cy="45" r="4" fill="#0E7490" />
+        </svg>
+      );
+
+    case "5g-nr-throughput":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#F0FDFA" />
+          <circle cx="100" cy="80" r="55" fill="#CCFBF1" />
+          {/* Speedometer gauge */}
+          <path d="M60 105A50 50 0 1 1 140 105" stroke="#0D9488" strokeWidth="6" strokeLinecap="round" strokeDasharray="4 6" />
+          <circle cx="100" cy="100" r="8" fill="#0F766E" />
+          <line x1="100" y1="100" x2="128" y2="72" stroke="#14B8A6" strokeWidth="3" strokeLinecap="round" />
+        </svg>
       );
 
     default:

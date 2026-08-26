@@ -56,10 +56,27 @@ import SnakeCamelConverter from "@/components/tools/SnakeCamelConverter";
 import ReplaceNewlines from "@/components/tools/ReplaceNewlines";
 import RandomGenerators from "@/components/tools/RandomGenerators";
 import VideoTools from "@/components/tools/VideoTools";
+import MuteVideo from "@/components/tools/MuteVideo";
 import LatexCompiler from "@/components/tools/LatexCompiler";
 import TextCleaner from "@/components/tools/TextCleaner";
+import LogoMaker from "@/components/tools/LogoMaker";
+import QrCodeGenerator from "@/components/tools/QrCodeGenerator";
+import SourceCodeHighlighter from "@/components/tools/SourceCodeHighlighter";
+import DomainNameExtractor from "@/components/tools/DomainNameExtractor";
+import ImageToBase64 from "@/components/tools/ImageToBase64";
+import FiveGNRThroughput from "@/components/tools/FiveGNRThroughput";
+import FiveGArfcnCalculator from "@/components/tools/FiveGArfcnCalculator";
+import InvoiceGenerator from "@/components/tools/InvoiceGenerator";
 
 const componentMap = {
+  "free-invoice-generator": InvoiceGenerator,
+  "5g-arfcn-to-frequency": FiveGArfcnCalculator,
+  "5g-nr-throughput": FiveGNRThroughput,
+  "image-to-base64": ImageToBase64,
+  "domain-name-extractor": DomainNameExtractor,
+  "source-code-highlighter": SourceCodeHighlighter,
+  "qr-code-generator": QrCodeGenerator,
+  "free-logo-maker": LogoMaker,
   "text-cleaner": TextCleaner,
   "latex-compiler": LatexCompiler,
   "word-counter": WordCounter,
@@ -117,7 +134,7 @@ const componentMap = {
 
   // Video Tools
   "video-tools": VideoTools,
-  "mute-video": VideoTools,
+  "mute-video": MuteVideo,
   "video-to-gif": VideoTools,
 
   // Random generators
