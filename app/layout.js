@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import FavoritesBar from "@/components/FavoritesBar";
 import ToasterProvider from "@/components/ToasterProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import PageTransition from "@/components/PageTransition";
 
 export const metadata = {
   title: "FreeTooly – 100+ Free Online Tools",
@@ -19,7 +20,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark" data-theme="dark">
+    <html lang="en" className="light" data-theme="light">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -31,7 +32,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider>
           <Header />
           <FavoritesBar />
-          <main className="min-h-screen">{children}</main>
+          <main className="min-h-screen"><PageTransition>{children}</PageTransition></main>
           <Footer />
           <ToasterProvider />
         </ThemeProvider>

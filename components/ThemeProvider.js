@@ -3,16 +3,16 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext({
-  theme: "dark",
+  theme: "light",
   toggleTheme: () => {},
 });
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("freetooly_theme") || "dark";
+    const savedTheme = localStorage.getItem("freetooly_theme") || "light";
     setTheme(savedTheme);
     applyTheme(savedTheme);
     setMounted(true);

@@ -24,6 +24,7 @@ import RandomTeamGenerator from "@/components/tools/RandomTeamGenerator";
 import AddLineNumbers from "@/components/tools/AddLineNumbers";
 import SortTextLines from "@/components/tools/SortTextLines";
 import CssBeautifier from "@/components/tools/CssBeautifier";
+import MorseCodeConverter from "@/components/tools/MorseCodeConverter";
 
 import WordToPdf from "@/components/tools/WordToPdf";
 import PdfToWord from "@/components/tools/PdfToWord";
@@ -77,6 +78,7 @@ const componentMap = {
   "add-line-numbers": AddLineNumbers,
   "sort-text-lines": SortTextLines,
   "css-beautifier": CssBeautifier,
+  "morse-code-converter": MorseCodeConverter,
 
   "word-to-pdf": WordToPdf,
   "pdf-to-word": PdfToWord,
