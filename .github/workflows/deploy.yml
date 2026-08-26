@@ -28,7 +28,7 @@ jobs:
         run: npm run build
 
       - name: 🚀 Fast Deploy to Hostinger via FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: 145.79.209.95
           username: ${{ secrets.HOSTINGER_FTP_USER }}
