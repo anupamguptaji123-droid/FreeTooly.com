@@ -61,7 +61,7 @@ export default function ToolCard({ tool }) {
     <div className="group relative bg-white dark:bg-[#131d2b] border border-slate-200 dark:border-[#223247] hover:border-blue-500 dark:hover:border-cyan-500/50 rounded-2xl p-5 sm:p-6 shadow-sm hover:shadow-2xl hover:shadow-slate-200/80 dark:hover:shadow-cyan-950/40 hover:-translate-y-1.5 transition-all duration-200 flex flex-col justify-between h-full">
       <Link href={`/tools/${tool.slug}`} className="block flex-1">
         {/* Differentiation Factor: Picture / Illustration Banner space */}
-        <div className="w-full aspect-[16/10] rounded-xl overflow-hidden mb-4 border border-slate-100 dark:border-[#202f43] bg-slate-50 dark:bg-[#0c131d] group-hover:scale-[1.02] transition-transform duration-200 relative shadow-inner">
+        <div className="w-full aspect-square rounded-xl overflow-hidden mb-5 border border-slate-100 dark:border-[#202f43] bg-slate-50 dark:bg-[#0c131d] group-hover:scale-[1.02] transition-transform duration-200 relative shadow-inner flex items-center justify-center">
           <ToolIllustration slug={tool.slug} name={tool.name} category={tool.category} />
 
           {/* Star Favorite Button */}

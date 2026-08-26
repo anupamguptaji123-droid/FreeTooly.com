@@ -3,7 +3,7 @@ export default function ToolCardSkeleton() {
     <div className="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-xs flex flex-col justify-between h-full animate-pulse">
       <div>
         {/* Banner skeleton */}
-        <div className="w-full aspect-[16/10] rounded-xl bg-slate-100 mb-4" />
+        <div className="w-full aspect-square rounded-xl bg-slate-100 mb-5" />
 
         {/* Badge skeleton */}
         <div className="h-5 w-24 rounded-md bg-slate-100 mb-3" />

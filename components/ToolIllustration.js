@@ -3,6 +3,15 @@
 export default function ToolIllustration({ slug, name, category }) {
   // Return tailored SVG illustration based on tool slug or category
   switch (slug) {
+    case "morse-code-converter":
+      return (
+        <img
+          src="/Mors_Code.png"
+          alt="Morse Code Converter"
+          className="h-full w-full object-contain"
+        />
+      );
+
     case "base64-encode-decode":
       return (
         <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
@@ -135,7 +144,6 @@ export default function ToolIllustration({ slug, name, category }) {
     case "text-cleaner":
     case "text-compare":
     case "word-counter":
-    case "word-frequency-counter":
       return (
         <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
           <rect width="200" height="160" rx="16" fill="#FDF4FF" />
@@ -147,6 +155,15 @@ export default function ToolIllustration({ slug, name, category }) {
           <line x1="78" y1="80" x2="115" y2="80" stroke="#C084FC" strokeWidth="2.5" strokeLinecap="round" />
           <line x1="78" y1="95" x2="105" y2="95" stroke="#C084FC" strokeWidth="2.5" strokeLinecap="round" />
         </svg>
+      );
+
+    case "word-frequency-counter":
+      return (
+        <img
+          src="/Word_Frequency_Counter.png"
+          alt="Word Frequency Counter"
+          className="h-full w-full object-contain"
+        />
       );
 
     default:
