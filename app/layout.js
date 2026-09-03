@@ -22,6 +22,20 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="light" data-theme="light">
       <head>
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function() {
+            var saved = localStorage.getItem('freetooly_theme');
+            if (!saved || saved === 'light') {
+              document.documentElement.classList.remove('dark');
+              document.documentElement.classList.add('light');
+              document.documentElement.setAttribute('data-theme', 'light');
+            } else if (saved === 'dark') {
+              document.documentElement.classList.add('dark');
+              document.documentElement.classList.remove('light');
+              document.documentElement.setAttribute('data-theme', 'dark');
+            }
+          })();
+        ` }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />

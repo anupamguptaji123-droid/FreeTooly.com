@@ -12,6 +12,7 @@ export function ThemeProvider({ children }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Default is always light — only respect "dark" if user explicitly chose it this session
     const savedTheme = localStorage.getItem("freetooly_theme") || "light";
     setTheme(savedTheme);
     applyTheme(savedTheme);
