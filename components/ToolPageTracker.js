@@ -40,7 +40,7 @@ export default function ToolPageTracker({ slug, name }) {
   }, [slug]);
 
   const handleToggle = () => {
-    toggleFavorite(slug);
+    toggleFavorite(slug, name);
   };
 
   return (
@@ -48,13 +48,13 @@ export default function ToolPageTracker({ slug, name }) {
       onClick={handleToggle}
       className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer shadow-xs active:scale-95 ${
         starred
-          ? "bg-amber-100 dark:bg-amber-400/20 border-amber-300 dark:border-amber-400/40 text-amber-900 dark:text-amber-300"
+          ? "bg-amber-100 dark:bg-amber-400/20 border-amber-300 dark:border-amber-400/40 text-amber-900 dark:text-amber-300 shadow-amber-500/10"
           : "bg-slate-100 dark:bg-[#192738] border-slate-200 dark:border-[#2b3e56] text-slate-700 dark:text-slate-300 hover:text-amber-500 dark:hover:text-amber-300 hover:border-amber-300"
       }`}
-      title={starred ? "Remove from Favorites" : "Add to Favorites"}
+      title={starred ? "Unpin from Front Section" : "Pin to Front Section"}
     >
       <StarIcon filled={starred} />
-      <span>{starred ? "Saved to Favorites" : "Add to Favorites"}</span>
+      <span>{starred ? "⭐ Pinned to Front Section" : "☆ Pin to Front Section"}</span>
     </button>
   );
 }

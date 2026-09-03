@@ -1,7 +1,6 @@
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import FavoritesBar from "@/components/FavoritesBar";
 import ToasterProvider from "@/components/ToasterProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import PageTransition from "@/components/PageTransition";
@@ -45,7 +44,6 @@ export default function RootLayout({ children }) {
       <body className="bg-page text-main min-h-screen transition-colors duration-200">
         <ThemeProvider>
           <Header />
-          <FavoritesBar />
           <main className="min-h-screen"><PageTransition>{children}</PageTransition></main>
           <Footer />
           <ToasterProvider />

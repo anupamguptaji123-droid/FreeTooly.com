@@ -23,7 +23,22 @@ function XIcon() {
 export default function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [favSlugs, setFavSlugs] = useState([]);
   const router = useRouter();
+
+  useEffect(() => {
+    const loadFavs = () => {
+      try {
+        const stored = JSON.parse(localStorage.getItem("freetooly_favs") || "[]");
+        setFavSlugs(stored);
+      } catch (e) {
+        setFavSlugs([]);
+      }
+    };
+    loadFavs();
+    window.addEventListener("favsUpdated", loadFavs);
+    return () => window.removeEventListener("favsUpdated", loadFavs);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -51,15 +66,28 @@ export default function CommandPalette() {
   }, [open]);
 
   const filtered = useMemo(() => {
-    if (!query.trim()) return tools.slice(0, 10);
-    return tools
-      .filter((t) =>
+    let pool = tools;
+    if (query.trim()) {
+      pool = tools.filter((t) =>
         t.name.toLowerCase().includes(query.toLowerCase()) ||
         t.description.toLowerCase().includes(query.toLowerCase()) ||
         t.category.toLowerCase().includes(query.toLowerCase())
-      )
+      );
+    }
+    // Sort pool so pinned / front-section tools are at the top
+    return [...pool]
+      .sort((a, b) => {
+        const aFav = favSlugs.includes(a.slug);
+        const bFav = favSlugs.includes(b.slug);
+        if (aFav && !bFav) return -1;
+        if (!aFav && bFav) return 1;
+        if (aFav && bFav) {
+          return favSlugs.indexOf(a.slug) - favSlugs.indexOf(b.slug);
+        }
+        return 0;
+      })
       .slice(0, 12);
-  }, [query]);
+  }, [query, favSlugs]);
 
   const handleSelect = (slug) => {
     setOpen(false);
@@ -121,8 +149,13 @@ export default function CommandPalette() {
                 <div className="flex items-center gap-3 min-w-0">
                   <span className="text-xl flex-shrink-0">{t.icon || "🔧"}</span>
                   <div className="min-w-0">
-                    <div className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 truncate">
-                      {t.name}
+                    <div className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 truncate flex items-center gap-1.5">
+                      <span>{t.name}</span>
+                      {favSlugs.includes(t.slug) && (
+                        <span className="text-[10px] font-extrabold px-1.5 py-0.5 rounded-md bg-amber-100 dark:bg-amber-400/20 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-400/40">
+                          ⭐ Pinned
+                        </span>
+                      )}
                     </div>
                     <div className="text-xs text-slate-500 dark:text-slate-400 truncate">{t.description}</div>
                   </div>

@@ -67,8 +67,10 @@ import ImageToBase64 from "@/components/tools/ImageToBase64";
 import FiveGNRThroughput from "@/components/tools/FiveGNRThroughput";
 import FiveGArfcnCalculator from "@/components/tools/FiveGArfcnCalculator";
 import InvoiceGenerator from "@/components/tools/InvoiceGenerator";
+import PngToWebp from "@/components/tools/PngToWebp";
 
 const componentMap = {
+  "png-to-webp": PngToWebp,
   "free-invoice-generator": InvoiceGenerator,
   "5g-arfcn-to-frequency": FiveGArfcnCalculator,
   "5g-nr-throughput": FiveGNRThroughput,

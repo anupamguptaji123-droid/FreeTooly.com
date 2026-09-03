@@ -58,6 +58,36 @@ export default function ToolIllustration({ slug, name, category }) {
         />
       );
 
+    case "png-to-webp":
+      return (
+        <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
+          <rect width="200" height="160" rx="16" fill="#FFF7ED" />
+          <circle cx="100" cy="80" r="55" fill="#FFEDD5" />
+          {/* Left card: PNG */}
+          <rect x="30" y="45" width="55" height="70" rx="8" fill="#FFFFFF" stroke="#F97316" strokeWidth="2" />
+          <rect x="38" y="55" width="39" height="30" rx="4" fill="#FDBA74" />
+          <circle cx="48" cy="65" r="3" fill="#EA580C" />
+          <path d="M40 80L50 68L60 80L75 62L77 80H40Z" fill="#C2410C" />
+          <rect x="38" y="93" width="39" height="14" rx="3" fill="#EA580C" />
+          <text x="57" y="103" fill="#FFFFFF" fontSize="8" fontWeight="bold" textAnchor="middle">PNG</text>
+
+          {/* Center Conversion Arrow */}
+          <path d="M92 76L102 76M102 76L97 71M102 76L97 81" stroke="#0284C7" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+
+          {/* Right card: WEBP */}
+          <rect x="115" y="40" width="60" height="78" rx="8" fill="#FFFFFF" stroke="#0284C7" strokeWidth="2.5" />
+          <rect x="123" y="50" width="44" height="34" rx="4" fill="#BAE6FD" />
+          <circle cx="135" cy="61" r="3.5" fill="#0284C7" />
+          <path d="M125 78L136 66L147 78L163 59L167 78H125Z" fill="#0369A1" />
+          <rect x="123" y="92" width="44" height="16" rx="3" fill="#0284C7" />
+          <text x="145" y="103.5" fill="#FFFFFF" fontSize="8" fontWeight="bold" textAnchor="middle">WEBP</text>
+
+          {/* Sparkle badge */}
+          <circle cx="170" cy="40" r="11" fill="#10B981" />
+          <text x="170" y="43" fill="#FFFFFF" fontSize="7" fontWeight="bold" textAnchor="middle">-80%</text>
+        </svg>
+      );
+
     case "merge-word":
       return (
         <img

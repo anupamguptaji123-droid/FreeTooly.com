@@ -40,6 +40,12 @@ export default function ToolGrid({ tools }) {
     };
   }, []);
 
+  const favTools = useMemo(() => {
+    return favSlugs
+      .map((slug) => tools.find((t) => t.slug === slug))
+      .filter(Boolean);
+  }, [tools, favSlugs]);
+
   const filtered = useMemo(() => {
     return tools.filter((t) => {
       let matchesCategory = false;
@@ -60,11 +66,25 @@ export default function ToolGrid({ tools }) {
     });
   }, [tools, query, category, favSlugs]);
 
+  // Sort filtered so that starred / pinned tools always appear first at the FRONT
+  const sortedFiltered = useMemo(() => {
+    return [...filtered].sort((a, b) => {
+      const aFav = favSlugs.includes(a.slug);
+      const bFav = favSlugs.includes(b.slug);
+      if (aFav && !bFav) return -1;
+      if (!aFav && bFav) return 1;
+      if (aFav && bFav) {
+        return favSlugs.indexOf(a.slug) - favSlugs.indexOf(b.slug);
+      }
+      return 0;
+    });
+  }, [filtered, favSlugs]);
+
   useEffect(() => {
     setVisibleCount(INITIAL_COUNT);
   }, [query, category]);
 
-  const visibleTools = filtered.slice(0, visibleCount);
+  const visibleTools = sortedFiltered.slice(0, visibleCount);
 
   const clearSearch = () => {
     setQuery("");
